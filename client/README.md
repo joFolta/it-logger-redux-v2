@@ -17,6 +17,11 @@
 
  *screenshots of XCode Simulator: iPhone SE 2nd Gen*
 
+## Differences with contact-keeper-MERN
+- fetch vs axios
+- need uuid package in client folder?
+
+
 ## Run the app
 - `npm install`
 - `npm run dev`
