@@ -17,9 +17,11 @@
 
  *screenshots of XCode Simulator: iPhone SE 2nd Gen*
 
-## Differences with contact-keeper-MERN
+## Upgrades/Differences with contact-keeper-MERN
 - fetch vs axios
 - need uuid package in client folder?
+- server/root-level dependencies: `npm i express bcryptjs jsonwebtoken config express-validator mongoose`
+- devDependencies: `npm i -D nodemon concurrently`
 
 
 ## Run the app
