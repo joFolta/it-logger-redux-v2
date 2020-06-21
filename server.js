@@ -13,7 +13,11 @@ const express = require("express");
 
 const app = express();
 
-app.get("/", (req, res) => res.send("hello world"));
+app.get("/", (req, res) => res.send({ msg: "Welcome to it-logger-redux-v2" }));
+
+// Define Routes
+app.use("/logs", require("./routes/logs"));
+app.use("/techs", require("./routes/techs"));
 
 const PORT = process.env.PORT || 5000; // process.env.PORT for PROD
 
