@@ -8,10 +8,10 @@
     <td>Tech List</td>
   </tr>
   <tr>
-    <td><img src="public/img/preview.png" alt="Preview" width=230 height=440></td>
-    <td><img src="public/img/enterlog.png" alt="Enter Log" width=230 height=440></td>
-    <td><img src="public/img/newtech.png" alt="Add New Tech" width=230 height=440></td>
-    <td><img src="public/img/techlist.png" alt="Tech List" width=230 height=440></td>
+    <td><img src="client/public/img/preview.png" alt="Preview" width=230 height=440></td>
+    <td><img src="client/public/img/enterlog.png" alt="Enter Log" width=230 height=440></td>
+    <td><img src="client/public/img/newtech.png" alt="Add New Tech" width=230 height=440></td>
+    <td><img src="client/public/img/techlist.png" alt="Tech List" width=230 height=440></td>
   </tr>
  </table>
 
