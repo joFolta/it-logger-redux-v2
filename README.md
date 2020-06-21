@@ -39,7 +39,7 @@
 <!-- redux: state management library; react-redux: allows redux to work with react; redux-thunk: middleware that allows async functions inside actions, so we can wait for a response, then dispatch to reducer; redux-devtools-extension: for chrome redux dev tools -->
 
 ## Redux Basics
-![Redux Logo](public/img/redux.png)
+![Redux Logo](client/public/img/redux.png)
 
 *Redux maintains the state of an entire application in a single immutable state tree (object), which can’t be changed directly. When something changes, a new object is created (using actions and reducers).* [Smashing Magazine](https://www.smashingmagazine.com/2016/06/an-introduction-to-redux/)
 
@@ -65,7 +65,7 @@ To use in a component...
 - now, `log` state and `getLogs()` action are ready to be used in this component (`Logs.js`)
 
 ## Testing routes with Postman
-![Preview](public/img/postman.png)
+![Preview](client/public/img/postman.png)
 - mock database is in `db.json` file
 - Complete CRUD functionality from `json-server`...
 
