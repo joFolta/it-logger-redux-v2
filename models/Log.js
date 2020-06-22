@@ -20,4 +20,4 @@ const LogSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("log", LogSchema);
+module.exports = mongoose.model("log", LogSchema, "logs"); // third param explicitly sets the name, otherwise mongoose tries to pluralize things, which can go wrong (tech -> teches)

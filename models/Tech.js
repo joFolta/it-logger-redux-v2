@@ -11,4 +11,4 @@ const TechSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("tech", TechSchema);
+module.exports = mongoose.model("tech", TechSchema, "techs"); // third param explicitly sets the name, otherwise mongoose tries to pluralize things, which can go wrong (tech -> teches)
