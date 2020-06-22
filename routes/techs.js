@@ -11,18 +11,6 @@ router.get("/", async (req, res) => {
   try {
     const techs = await Tech.find({});
     res.json(techs);
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
-    // TODO GET NOT WORKING, returns empty array
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error. Unable to get techs. ");
@@ -32,9 +20,24 @@ router.get("/", async (req, res) => {
 // @route       POST /techs
 // @description Add new technician
 // @access      Public
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   // res.send("Add technician");
-  res.send(req.body); // body/json enabled by middleware from server.js ....app.use(express.json({ extended: false }));
+
+  const { firstName, lastName } = req.body;
+  try {
+    const newTech = new Tech({
+      firstName,
+      lastName,
+    });
+
+    const tech = await newTech.save(); // save tech to db
+
+    res.json(tech); // return tech to client (why on a POST?; we have GET /logs"); standard procedure...?
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error. Unable to add technician. ");
+  }
+  // res.send(req.body); // body/json enabled by middleware from server.js ....app.use(express.json({ extended: false }));
 });
 
 // @route       DELETE /techs
