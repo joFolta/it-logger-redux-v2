@@ -13,7 +13,7 @@ const LogSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  data: {
+  date: {
     type: Date,
     required: true,
     // default: Date.now,

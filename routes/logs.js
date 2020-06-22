@@ -20,9 +20,27 @@ router.get("/", async (req, res) => {
 // @route       POST /logs
 // @description Create a new IT log
 // @access      Public
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   // res.send("Create a new IT log");
-  res.send(req.body); // body/json enabled by middleware from server.js ....app.use(express.json({ extended: false }));
+
+  const { message, attention, tech, date } = req.body;
+  try {
+    const newLog = new Log({
+      message: message,
+      attention,
+      tech,
+      date,
+    });
+
+    const log = await newLog.save(); // save log to db
+
+    res.json(log); // return log to client (why on a POST?; we have GET /logs"); standard procedure...?
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error. Unable to add log. ");
+  }
+
+  // res.send(req.body); // body/json enabled by middleware from server.js ....app.use(express.json({ extended: false }));
 });
 
 // @route       PUT /logs
