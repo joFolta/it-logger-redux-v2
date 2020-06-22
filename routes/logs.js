@@ -1,11 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
+const Log = require("../models/Log");
+
 // @route       GET /logs
 // @description Get all IT logs
 // @access      Public
-router.get("/", (req, res) => {
-  res.send("Get logs");
+router.get("/", async (req, res) => {
+  // res.send("Get logs");
+  try {
+    const logs = await Log.find({});
+    res.json(logs);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error. Unable to get logs. ");
+  }
 }); // "/" endpoint b/c server.js handles the "/logs" routing to this logs.js file
 
 // @route       POST /logs

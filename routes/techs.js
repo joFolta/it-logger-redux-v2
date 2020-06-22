@@ -1,11 +1,32 @@
 const express = require("express");
 const router = express.Router();
 
+const Tech = require("../models/Tech");
+
 // @route       GET /techs
 // @description Get all technicians
 // @access      Public
-router.get("/", (req, res) => {
-  res.send("Get all technicians");
+router.get("/", async (req, res) => {
+  // res.send("Get all technicians");
+  try {
+    const techs = await Tech.find({});
+    res.json(techs);
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+    // TODO GET NOT WORKING, returns empty array
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error. Unable to get techs. ");
+  }
 }); // "/" endpoint b/c server.js handles the "/logs" routing to this logs.js file
 
 // @route       POST /techs
