@@ -7,6 +7,9 @@ const app = express();
 // Connect Database
 connectDB();
 
+// Init Middleware
+app.use(express.json({ extended: false })); // allows body data to be accepted by server (equivalent of body-parser package; now build into express)
+
 app.get("/", (req, res) => res.send({ msg: "Welcome to it-logger-redux-v2" }));
 
 // Define Routes

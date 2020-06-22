@@ -12,7 +12,8 @@ router.get("/", (req, res) => {
 // @description Create a new IT log
 // @access      Public
 router.post("/", (req, res) => {
-  res.send("Create a new IT log");
+  // res.send("Create a new IT log");
+  res.send(req.body); // body/json enabled by middleware from server.js ....app.use(express.json({ extended: false }));
 });
 
 // @route       PUT /logs

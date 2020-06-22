@@ -24,6 +24,9 @@
 - devDependencies: `npm i -D nodemon concurrently`
 
 
+## TODO
+- Use `express-validator` <!-- See Tutorial vid #42. User Model & Validtation 5:05 https://www.udemy.com/course/modern-react-front-to-back/learn/lecture/14969958-->
+
 ## Run the app
 - `npm install`
 - `npm run dev`

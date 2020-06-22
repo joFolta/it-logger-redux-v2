@@ -12,7 +12,8 @@ router.get("/", (req, res) => {
 // @description Add new technician
 // @access      Public
 router.post("/", (req, res) => {
-  res.send("Add technician");
+  // res.send("Add technician");
+  res.send(req.body); // body/json enabled by middleware from server.js ....app.use(express.json({ extended: false }));
 });
 
 // @route       DELETE /techs
