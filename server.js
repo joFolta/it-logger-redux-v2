@@ -1,17 +1,11 @@
 // Using CommonJS's require (can't ES6 import like in React)
 const express = require("express");
-// const connectDB = require("./config/db");
-// TODO
-// TODO
-// TODO
-// TODO
-// TODO
-// TODO
-// TODO
-// TODO
-// TODO
+const connectDB = require("./config/db");
 
 const app = express();
+
+// Connect Database
+connectDB();
 
 app.get("/", (req, res) => res.send({ msg: "Welcome to it-logger-redux-v2" }));
 
