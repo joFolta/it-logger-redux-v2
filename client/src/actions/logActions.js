@@ -10,20 +10,6 @@ import {
   CLEAR_CURRENT,
 } from "./types";
 
-// export const getLogs = () => {
-//   return async (dispatch) => {
-//     // redux-thunk middleware allows async functions inside actions, so we can wait for a response, then dispatch to reducer
-//     setLoading();
-//     const res = await fetch("./logs");
-//     const data = await res.json();
-
-//     dispatch({
-//       type: GET_LOGS,
-//       payload: data,
-//     });
-//   };
-// };
-
 // Get logs from server (Refactored with error handling)
 export const getLogs = () => async (dispatch) => {
   // redux-thunk middleware allows async functions inside actions, so we can wait for a response, then dispatch to reducer
@@ -40,7 +26,7 @@ export const getLogs = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGS_ERROR,
-      payload: err.response.statusText,
+      payload: err,
     });
   }
 };
@@ -67,7 +53,7 @@ export const addLog = (log) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGS_ERROR,
-      payload: err.response.statusText,
+      payload: err,
     });
   }
 };
@@ -89,7 +75,7 @@ export const deleteLog = (id) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGS_ERROR,
-      payload: err.response.statusText,
+      payload: err,
     });
   }
 };
@@ -107,7 +93,6 @@ export const updateLog = (log) => async (dispatch) => {
     });
 
     const data = await res.json();
-
     dispatch({
       type: UPDATE_LOG,
       payload: data,
@@ -115,7 +100,7 @@ export const updateLog = (log) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGS_ERROR,
-      payload: err.response.statusText,
+      payload: err,
     });
   }
 };
@@ -136,7 +121,7 @@ export const searchLogs = (text) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGS_ERROR,
-      payload: err.response.statusText,
+      payload: err,
     });
   }
 };

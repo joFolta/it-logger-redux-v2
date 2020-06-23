@@ -18,14 +18,15 @@
  *screenshots of XCode Simulator: iPhone SE 2nd Gen*
 
 ## Upgrades/Differences with contact-keeper-MERN
+- Hooked up to MongoDB Database vs quick mockup / fake REST API (`express` vs. `json-server`)
 - fetch vs axios
-- need uuid package in client folder?
 - server/root-level dependencies: `npm i express bcryptjs jsonwebtoken config express-validator mongoose`
 - devDependencies: `npm i -D nodemon concurrently`
 
 
 ## TODO
 - Use `express-validator` <!-- See Tutorial vid #42. User Model & Validtation 5:05 https://www.udemy.com/course/modern-react-front-to-back/learn/lecture/14969958-->
+- Setup searchLogs action - Search server logs (for SearchBar.js)
 
 ## Run the app
 - `npm install`

@@ -43,8 +43,16 @@ router.post("/", async (req, res) => {
 // @route       DELETE /techs
 // @description Delete technician
 // @access      Public
-router.delete("/:id", (req, res) => {
-  res.send("Technician deleted");
+router.delete("/:id", async (req, res) => {
+  // res.send("Technician deleted");
+  try {
+    await Tech.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: "Technician removed from database. " }); // unused response
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error. Unable to delete technician. ");
+  }
 });
 
 module.exports = router;

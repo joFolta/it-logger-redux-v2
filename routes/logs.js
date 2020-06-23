@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
   const { message, attention, tech, date } = req.body;
   try {
     const newLog = new Log({
-      message: message,
+      message, // message: message,
       attention,
       tech,
       date,
@@ -46,21 +46,45 @@ router.post("/", async (req, res) => {
 // @route       PUT /logs
 // @description Update an IT log
 // @access      Public
-router.put("/:id", (req, res) => {
-  res.send("Update an IT log");
+router.put("/:id", async (req, res) => {
+  // res.send("Update an IT log");
+  const { message, attention, tech, date } = req.body;
+
+  // Build log object
+  const logFields = {}; // can't use new Log({}) here b/c it'll generate a new `_id`, which is immutable
+  if (message) logFields.message = message;
+  if (attention) logFields.attention = attention;
+  if (tech) logFields.tech = tech;
+  if (date) logFields.date = date;
+
+  try {
+    const log = await Log.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: logFields,
+      },
+      { new: true }
+    );
+    res.json(log);
+  } catch (err) {
+    console.error(err.message); // message for the server (viewable in terminal)
+    res.status(500).send("Server Error. Unable to edit log. ");
+  }
 });
 
 // @route       DELETE /logs
 // @description Delete an IT log
 // @access      Public
-router.delete("/:id", (req, res) => {
-  res.send("Delete an IT log");
-});
+router.delete("/:id", async (req, res) => {
+  // res.send("Delete an IT log");
+  try {
+    await Log.findByIdAndRemove(req.params.id);
 
-// TODO searchLogs
-// TODO searchLogs
-// TODO searchLogs
-// TODO searchLogs
-// TODO searchLogs
+    res.json({ msg: "Log removed from database. " }); // unused response
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error. Unable to delete log. ");
+  }
+});
 
 module.exports = router;

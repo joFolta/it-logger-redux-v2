@@ -18,4 +18,4 @@ app.use("/techs", require("./routes/techs"));
 
 const PORT = process.env.PORT || 5000; // process.env.PORT for PROD
 
-app.listen(PORT, () => console.log(`Server stated on port ${PORT}...`));
+app.listen(PORT, () => console.log(`Server started on port ${PORT}...`));
