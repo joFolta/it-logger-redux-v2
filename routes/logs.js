@@ -52,10 +52,10 @@ router.put("/:id", async (req, res) => {
 
   // Build log object
   const logFields = {}; // can't use new Log({}) here b/c it'll generate a new `_id`, which is immutable
-  if (message) logFields.message = message;
-  if (attention) logFields.attention = attention;
-  if (tech) logFields.tech = tech;
-  if (date) logFields.date = date;
+  logFields.message = message;
+  logFields.attention = attention;
+  logFields.tech = tech;
+  logFields.date = date;
 
   try {
     const log = await Log.findByIdAndUpdate(
