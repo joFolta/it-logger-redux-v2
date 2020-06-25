@@ -8,6 +8,8 @@ import {
   SEARCH_LOGS,
   SET_CURRENT,
   CLEAR_CURRENT,
+  FILTER_LOGS,
+  CLEAR_FILTER,
 } from "../actions/types";
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
   current: null,
   loading: false,
   error: null,
+  filtered: null,
 };
 
 export default (state = initialState, action) => {
@@ -71,6 +74,16 @@ export default (state = initialState, action) => {
         error: action.payload,
         loading: false,
       };
+    case FILTER_LOGS:
+      return {
+        ...state,
+        filtered: state.logs.filter((log) => {
+          const regex = new RegExp(`${action.payload}`, "gi"); // "gi" param: Global and case-Insensitive
+          return log.message.match(regex) || log.tech.match(regex);
+        }),
+      };
+    case CLEAR_FILTER:
+      return { ...state, filtered: null };
     default:
       return state;
   }

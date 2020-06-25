@@ -1,13 +1,25 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { searchLogs } from "../../actions/logActions";
+import { filterLogs, clearFilter } from "../../actions/logActions";
 
-const SearchBar = ({ searchLogs }) => {
+const SearchBar = ({ logs, filterLogs, clearFilter }) => {
+  useEffect(() => {
+    if (text.current.value !== "") {
+      filterLogs(text.current.value);
+    } else {
+      clearFilter();
+    }
+  }, [logs]); // so that filtering occurs whenever updateLog() and deleteLog() are called
+
   const text = useRef(""); // useRef to bring in value from form
 
   const onChange = (e) => {
-    searchLogs(text.current.value); // bringing in text.current.value to searchLogs()
+    if (text.current.value !== "") {
+      filterLogs(e.target.value);
+    } else {
+      clearFilter();
+    }
   };
 
   return (
@@ -17,10 +29,10 @@ const SearchBar = ({ searchLogs }) => {
           <form>
             <div className="input-field">
               <input
+                ref={text}
                 id="search"
                 type="search"
                 placeholder="Search Logs..."
-                ref={text}
                 onChange={onChange}
               />
               <label className="label-icon" htmlFor="search">
@@ -36,7 +48,18 @@ const SearchBar = ({ searchLogs }) => {
 };
 
 SearchBar.propTypes = {
-  searchLogs: PropTypes.func.isRequired,
+  logs: PropTypes.array, // value is null initially
+  filterLogs: PropTypes.func.isRequired,
+  clearFilter: PropTypes.func.isRequired,
 };
 
-export default connect(null, { searchLogs })(SearchBar); // null b/c we are not bringing in any state here
+const mapStateToProps = (state) => ({
+  logs: state.log.logs,
+  // `logs` could be called anything; it's just the arbitrary name for the prop pulled in;
+  // however, `state.log` maps to `src/reducers/index.js`'s `log`
+});
+
+export default connect(mapStateToProps, {
+  filterLogs,
+  clearFilter,
+})(SearchBar);

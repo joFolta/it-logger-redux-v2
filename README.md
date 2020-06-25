@@ -17,16 +17,17 @@
 
  *screenshots of XCode Simulator: iPhone SE 2nd Gen*
 
-## Upgrades/Differences with contact-keeper-MERN
+## Upgrades/Differences from it-logger-redux-v1
 - Hooked up to MongoDB Database vs quick mockup / fake REST API (`express` vs. `json-server`)
-- fetch vs axios
-- server/root-level dependencies: `npm i express bcryptjs jsonwebtoken config express-validator mongoose`
-- devDependencies: `npm i -D nodemon concurrently`
+- Setup local search/filter in SearchBar.js vs `json-server`'s ![Full-text search](https://github.com/typicode/json-server#full-text-search)
+- Fetch vs axios
+- Server/root-level dependencies: `npm i express bcryptjs jsonwebtoken config express-validator mongoose`
+- Dev dependencies: `npm i -D nodemon concurrently`
 
 ## TODO
-- Use `express-validator` <!-- See Tutorial vid #42. User Model & Validtation 5:05 https://www.udemy.com/course/modern-react-front-to-back/learn/lecture/14969958-->
-- Setup searchLogs action - Search server logs (for SearchBar.js)
+- Add mobile media query to readme's
 - Look into security of API keys with npm package `config`
+- Make SearchBar's X clear out the search text
 
 ## Run the app
 - `npm install`
@@ -50,7 +51,7 @@
 - wrap entire `App.js`'s return with `<Provider store={store}></Provider>`
 - unlike React's `useContext`, we don't have to bring in different contexts separately; Redux has a central store
 - `src/store.js`
-- `src/reducers` contains `index.js` which points to all the reducers
+- `src/reducers` contains `index.js` which points to all the reducers with `export default combineReducers()`
 - `src/actions` contains actions and `types.js`
 
 To add a functionality using Redux...
@@ -64,13 +65,13 @@ To use in a component...
 - `import { getLogs } from "../../actions/logActions"` for bringing in action(s)
 - `const Logs = ({ log: { logs, loading }, getLogs }) => {...}` to bring in state/action as props
 - `const mapStateToProps = (state) => ({ log: state.log })` to map state as prop
-- add `PropTypes` for state and action
+- Add `PropTypes` for state and action
 - `export default connect(mapStateToProps, { getLogs })(Logs)`  connects everything in the component's export
-- now, `log` state and `getLogs()` action are ready to be used in this component (`Logs.js`)
+- Now, `log` state and `getLogs()` action are ready to be used in this component (`Logs.js`)
 
 ## Testing routes with Postman
 ![Preview](client/public/img/postman.png)
-- mock database is in `db.json` file
+- Mock database is in `db.json` file
 - Complete CRUD functionality from `json-server`...
 
 - GET `http://localhost:5000/logs` -> shows logs data

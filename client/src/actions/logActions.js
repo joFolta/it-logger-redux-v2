@@ -5,9 +5,10 @@ import {
   ADD_LOG,
   DELETE_LOG,
   UPDATE_LOG,
-  SEARCH_LOGS,
   SET_CURRENT,
   CLEAR_CURRENT,
+  FILTER_LOGS,
+  CLEAR_FILTER,
 } from "./types";
 
 // Get logs from server (Refactored with error handling)
@@ -105,25 +106,14 @@ export const updateLog = (log) => async (dispatch) => {
   }
 };
 
-// Search server logs (for SearchBar.js)
-export const searchLogs = (text) => async (dispatch) => {
-  // redux-thunk middleware allows async functions inside actions, so we can wait for a response, then dispatch to reducer
-  try {
-    setLoading();
+// Filter Logs / Search server logs (for SearchBar.js)
+export const filterLogs = (text) => (dispatch) => {
+  dispatch({ type: FILTER_LOGS, payload: text });
+};
 
-    const res = await fetch(`./logs?q=${text}`); // this works with json-server :)
-    const data = await res.json();
-
-    dispatch({
-      type: SEARCH_LOGS,
-      payload: data,
-    });
-  } catch (err) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: err,
-    });
-  }
+// Clear Filter
+export const clearFilter = () => (dispatch) => {
+  dispatch({ type: CLEAR_FILTER });
 };
 
 // Set current log (for editing logs)
