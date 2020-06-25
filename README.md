@@ -18,10 +18,11 @@
  *screenshots of XCode Simulator: iPhone SE 2nd Gen*
 
 ## Upgrades/Differences from it-logger-redux-v1
-- Hooked up to MongoDB Database vs quick mockup / fake REST API (`express` vs. `json-server`)
+- Hooked up true CRUD functionality to the MongoDB database vs quick mockup / fake REST API (`express` vs. `json-server`)
 - Setup local search/filter in SearchBar.js vs `json-server`'s [Full-text search](https://github.com/typicode/json-server#full-text-search)
-- Fetch vs axios
-- Server/root-level dependencies: `npm i express bcryptjs jsonwebtoken config express-validator mongoose`
+- Used fetch vs axios
+- Server on root directory and client on subfolder
+- Dependencies: `npm i express bcryptjs jsonwebtoken config express-validator mongoose`
 - Dev dependencies: `npm i -D nodemon concurrently`
 
 ## TODO
