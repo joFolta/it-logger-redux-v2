@@ -18,10 +18,7 @@
  *screenshots of XCode Simulator: iPhone SE 2nd Gen*
 
 ## Upgrades/Differences From it-logger-redux-v1
-<!-- - Deployed web app on heroku -->
-<!-- - Deployed web app on heroku -->
-<!-- - Deployed web app on heroku -->
-<!-- - Deployed web app on heroku -->
+- Deployed web app on heroku
 - Hooked up true CRUD functionality to the MongoDB database vs quick mockup / fake REST API (`express` vs. `json-server`)
 - Setup local search/filter in SearchBar.js vs `json-server`'s [Full-text search](https://github.com/typicode/json-server#full-text-search)
 - Used fetch vs axios
@@ -30,10 +27,6 @@
 - Dev dependencies: `npm i -D nodemon concurrently`
 
 ## TODO
-<!-- TODO REMOVE -->
-<!-- TODO REMOVE -->
-<!-- TODO REMOVE -->
-- Deploy web app on heroku
 - Add mobile media query to readme's for png sizes
 - Look into security of API keys with npm package `config`
 - Make SearchBar's X clear out the search text
@@ -43,7 +36,7 @@
 - To check installation run `heroku --version`
 - On `server.js`, in production environment, point to client build folder and it's `index.html`
 - Point config package to `config/production.json` (contains db "info")
-- Add this script to top-level (server) package.json: `"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"`
+- Add this script to top-level (server) package.json: `"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"` (see readme comments for more info)
 <!-- temporary turn off production in order to run build...?; and for client: install dependencies and run build -->
 - `heroku login` (from root)
 - `heroku create` to create a heroku subdomain with a funny name <!-- and now, it's viewable in your heroku dashboard https://dashboard.heroku.com/apps -->
