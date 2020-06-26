@@ -26,11 +26,6 @@
 - Dependencies: `npm i express bcryptjs jsonwebtoken config express-validator mongoose`
 - Dev dependencies: `npm i -D nodemon concurrently`
 
-## TODO
-- Add mobile media query to readme's for png sizes
-- Look into security of API keys with npm package `config`
-- Make SearchBar's X clear out the search text
-
 ## Heroku Deploy Steps
 - [Install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)<!-- Command Line Interface -->
 - To check installation run `heroku --version`
@@ -43,6 +38,11 @@
 - commit and push all changes to github
 - `heroku git:remote -a <SUBDOMAIN FROM THE HEROKU CREATE STEP>` to update git repository to point also to heroku (in addition to github)<!-- instructions under heroku website's "Create a new Git repository". On your heroku dashboard website... navigate to the new app (i.e. subdomain with funny name) and click on the Deploy tab to get to "Create a new Git repository" -->
 - `git push heroku master` <!-- run the postbuild script and create static assets and deploy-->
+
+## TODO
+- Add mobile media query to readme's for png sizes
+- Look into security of API keys with npm package `config`
+- Make SearchBar's X clear out the search text
 
 ## Run The App
 - `npm install`
