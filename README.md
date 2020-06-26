@@ -26,7 +26,7 @@
 - Dev dependencies: `npm i -D nodemon concurrently`
 
 ## TODO
-- Add mobile media query to readme's
+- Add mobile media query to readme's for png sizes
 - Look into security of API keys with npm package `config`
 - Make SearchBar's X clear out the search text
 
