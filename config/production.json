@@ -1,0 +1,5 @@
+{
+  "mongoURI": "mongodb+srv://johann123:johann123@cluster0-ge3it.mongodb.net/testDb?retryWrites=true&w=majority"
+}
+
+// normally different API "info" from dev VS. production

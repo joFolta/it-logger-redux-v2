@@ -17,7 +17,11 @@
 
  *screenshots of XCode Simulator: iPhone SE 2nd Gen*
 
-## Upgrades/Differences from it-logger-redux-v1
+## Upgrades/Differences From it-logger-redux-v1
+<!-- - Deployed web app on heroku -->
+<!-- - Deployed web app on heroku -->
+<!-- - Deployed web app on heroku -->
+<!-- - Deployed web app on heroku -->
 - Hooked up true CRUD functionality to the MongoDB database vs quick mockup / fake REST API (`express` vs. `json-server`)
 - Setup local search/filter in SearchBar.js vs `json-server`'s [Full-text search](https://github.com/typicode/json-server#full-text-search)
 - Used fetch vs axios
@@ -34,7 +38,20 @@
 - Look into security of API keys with npm package `config`
 - Make SearchBar's X clear out the search text
 
-## Run the app
+## Heroku Deploy Steps
+- [Install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)<!-- Command Line Interface -->
+- To check installation run `heroku --version`
+- On `server.js`, in production environment, point to client build folder and it's `index.html`
+- Point config package to `config/production.json` (contains db "info")
+- Add this script to top-level (server) package.json: `"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"`
+<!-- temporary turn off production in order to run build...?; and for client: install dependencies and run build -->
+- `heroku login` (from root)
+- `heroku create` to create a heroku subdomain with a funny name <!-- and now, it's viewable in your heroku dashboard https://dashboard.heroku.com/apps -->
+- commit and push all changes to github
+- `heroku git:remote -a <SUBDOMAIN FROM THE HEROKU CREATE STEP>` to update git repository to point also to heroku (in addition to github)<!-- instructions under heroku website's "Create a new Git repository". On your heroku dashboard website... navigate to the new app (i.e. subdomain with funny name) and click on the Deploy tab to get to "Create a new Git repository" -->
+- `git push heroku master` <!-- run the postbuild script and create static assets and deploy-->
+
+## Run The App
 - `npm install`
 - `npm run dev`
 
@@ -74,7 +91,7 @@ To use in a component...
 - `export default connect(mapStateToProps, { getLogs })(Logs)`  connects everything in the component's export
 - Now, `log` state and `getLogs()` action are ready to be used in this component (`Logs.js`)
 
-## Testing routes with Postman
+## Testing Routes With Postman
 ![Preview](client/public/img/postman.png)
 - Mock database is in `db.json` file
 - Complete CRUD functionality from `json-server`...
