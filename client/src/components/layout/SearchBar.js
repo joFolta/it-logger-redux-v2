@@ -12,6 +12,7 @@ const SearchBar = ({ logs, filterLogs, clearFilter }) => {
     }
     // eslint warning... perhaps use useState here instead...?
     // see: https://stackoverflow.com/questions/58866796/react-hooks-exhaustive-deps-lint-rule
+    // eslint-disable-next-line
   }, [logs]); // so that filtering occurs whenever updateLog() and deleteLog() are called
 
   const text = useRef(""); // useRef to bring in value from form
