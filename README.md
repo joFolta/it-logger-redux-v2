@@ -23,7 +23,7 @@
 - Setup local search/filter in SearchBar.js vs `json-server`'s [Full-text search](https://github.com/typicode/json-server#full-text-search)
 - Used fetch vs axios
 - Server on root directory and client on subfolder
-- Dependencies: `npm i express bcryptjs jsonwebtoken config express-validator mongoose`
+- Dependencies: `npm i express config mongoose`
 - Dev dependencies: `npm i -D nodemon concurrently`
 
 ## Heroku Deploy Steps
